@@ -1,7 +1,5 @@
 import './App.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 
 //components
 import Homepage from '../pages/Homepage/Homepage';
@@ -53,12 +51,6 @@ const theme = createTheme({
 })
 
 function App() {
-
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getPosts());
-  // }, [dispatch]);
 
   return (
     <ThemeProvider theme={theme} >
