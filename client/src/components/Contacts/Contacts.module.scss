@@ -1,0 +1,59 @@
+@import "../../styles/variables";
+
+.container {
+    height: calc(100vh - 61px);
+    background-color: $SecondaryLayoutColor;
+    padding: 0 20px;
+    overflow-x: auto;
+
+    .header {
+        padding: 10px 0;
+        font-size: 1.1rem;
+    }
+    .contents {
+        .contact {
+            font-size: 0.8rem;
+            display: grid;
+            grid-template-columns: min-content auto;
+            gap: 15px;
+            padding: 10px 0;
+            align-items: center;
+
+            .contactImg {
+                height: 60px;
+                width: 60px;
+                border-radius: 5px;
+                overflow: hidden;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+            .contactInfo {
+                .name {
+                    width: 185px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                .email {
+                    width: 185px;
+                    overflow: hidden;
+                    width: 100%;
+                    color: $SecondaryFontColor;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                .phoneNumber {
+                    width: 185px;
+                    width: 100%;
+                    color: $SecondaryFontColor;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,138 @@
+@import "../../styles/variables";
+
+.container {
+    display: grid;
+    grid-template-columns: 22vw auto 22vw;
+    height: calc(100vh - 61px);
+    justify-content: space-between;
+
+    .contactSection {
+    }
+    .feed {
+        max-width: 700px;
+        overflow-y: auto;
+
+        .card {
+            margin: 10px 15px;
+            padding: 20px 20px;
+            border-radius: 10px;
+            background-color: $SecondaryLayoutColor;
+            box-shadow: 2px 2px 22px rgba(0, 0, 0, 0.251);
+
+            .cardHeader {
+                padding-bottom: 10px;
+                font-size: 1.1rem;
+            }
+            .form {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                .buttons {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    .uploadBtn {
+                        font-size: 0.8rem;
+
+                        .uploadBtnText {
+                            padding-right: 10px;
+                        }
+                    }
+                }
+            }
+
+            .postImage {
+                width: 100%;
+
+                img {
+                    width: 100%;
+                    border-radius: 10px;
+                    object-fit: cover;
+                }
+            }
+            .postDetails {
+                .postTitle {
+                }
+                .postDescription {
+                    padding: 10px 0;
+                    font-size: 0.8rem;
+                }
+            }
+            .postActions {
+                border-top: 1px solid $SecondaryColor;
+                padding-top: 15px;
+                font-size: 0.8rem;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .delete {
+                    border: 1px solid #00000000;
+                    padding: 3px 5px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: 0.3s;
+
+                    &:hover {
+                        border: 1px solid $ErrorColor;
+                        color: $ErrorColor;
+                        background-color: $ErrorColorBackground;
+                    }
+
+                    .deleteIcon {
+                    }
+                    .deleteText {
+                        padding-left: 10px;
+                    }
+                }
+
+                .likesAndDislikes {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 20px;
+
+                    .likes {
+                        border: 1px solid #00000000;
+                        padding: 3px 5px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        transition: 0.3s;
+
+                        &:hover {
+                            border: 1px solid $PrimaryColor;
+                            color: $PrimaryColor;
+                            background-color: $LayoutColor;
+                        }
+                        .likeIcon {
+                        }
+                        .likeCount {
+                            padding-left: 10px;
+                        }
+                    }
+                    .dislikes {
+                        border: 1px solid #00000000;
+                        padding: 3px 5px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        transition: 0.3s;
+
+                        &:hover {
+                            border: 1px solid $PrimaryColor;
+                            color: $PrimaryColor;
+                            background-color: $LayoutColor;
+                        }
+                        .dislikeIcon {
+                        }
+                        .dislikeCount {
+                            padding-left: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .suggestions {
+    }
+}

@@ -1,0 +1,51 @@
+@import "../../styles/variables";
+
+.container {
+    display: grid;
+    grid-template-columns: 200px auto 200px;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid $SecondaryColor;
+
+    .controls {
+        color: $PrimaryColor;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+
+        .icon {
+            cursor: pointer;
+            transition: 0.3s;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    .logo {
+        height: 60px;
+        text-align: center;
+
+        img {
+            height: 100%;
+        }
+    }
+    .user {
+        color: $PrimaryColor;
+        justify-content: right;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+
+        .avatar {
+            transition: 0.3s;
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
