@@ -6,6 +6,8 @@ const postReducer = (state = [], action) => {
             return [...state, action.payload];
         case 'DELETE':
             return action.payload;
+        case 'LIKE':
+            return action.payload;
         default:
             return state;
     }

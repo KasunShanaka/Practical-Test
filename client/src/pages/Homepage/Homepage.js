@@ -9,25 +9,35 @@ import Suggestions from '../../components/Suggestions/Suggestions';
 import TextField from "@mui/material/TextField";
 import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { createPost, getPosts, deletePost } from '../../store/actions';
+import { createPost, getPosts, deletePost, likePost } from '../../store/actions';
 
 const Homepage = () => {
 
     const dispatch = useDispatch();
 
-    const [postdata, setPostData] = useState({ title: '', description: '', image: '' });
+    const [postdata, setPostData] = useState({ title: '', description: '', image: '', likes: 0, dislikes: 0, liked: false, disliked: false });
+    const [liked, setLiked] = useState(false) //have to fix here default state
 
     const posts = useSelector(state => state.posts);
 
     useEffect(() => {
         dispatch(getPosts())
-    }, [dispatch, ])
+    }, [dispatch,])
 
     const handleFileChange = (fileData) => {
         setPostData(fileData);
     }
 
-    const handleDelete = (id) =>{
+    const handleLike = (id) => {
+        // setLiked(!liked);
+        setPostData({
+            likes: 1,
+            liked: liked
+        })
+        dispatch(likePost(id, postdata))
+    }
+
+    const handleDelete = (id) => {
         dispatch(deletePost(id))
     }
 
@@ -93,7 +103,7 @@ const Homepage = () => {
                     </form>
                 </div>
                 {
-                    posts.map((i, j) => (
+                    posts?.map((i, j) => (
                         <div key={j} className={style.card}>
                             <div className={style.postImage}>
                                 <img src={i.image} alt="" />
@@ -107,7 +117,7 @@ const Homepage = () => {
                                 </div>
                             </div>
                             <div className={style.postActions}>
-                                <div onClick={()=> handleDelete(i._id)} className={style.delete}>
+                                <div onClick={() => handleDelete(i._id)} className={style.delete}>
                                     <span className={style.deleteIcon}>
                                         <i className='feather-trash-2' />
                                     </span>
@@ -116,12 +126,12 @@ const Homepage = () => {
                                     </span>
                                 </div>
                                 <div className={style.likesAndDislikes}>
-                                    <div className={style.likes}>
+                                    <div onClick={() => handleLike(i._id)} className={style.likes}>
                                         <span className={style.likeIcon}>
                                             <i className='feather-thumbs-up' />
                                         </span>
                                         <span className={style.likeCount}>
-                                            0 Likes
+                                            {i.likes} Likes
                                         </span>
                                     </div>
                                     <div className={style.dislikes}>
@@ -129,7 +139,7 @@ const Homepage = () => {
                                             <i className='feather-thumbs-down' />
                                         </span>
                                         <span className={style.dislikeCount}>
-                                            0 Dislikes
+                                            {i.dislikes} Dislikes
                                         </span>
                                     </div>
                                 </div>

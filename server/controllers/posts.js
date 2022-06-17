@@ -24,10 +24,21 @@ export const createPost = async (req, res) => {
 
 export const deletePost = async (req, res) => {
     const { id: _id } = req.params;
-    // const customerBody = req.body;
 
     try {
         await post.findByIdAndDelete({ _id: mongoose.Types.ObjectId(_id) });
+        res.status(201).json({ message: "successfully deleted" });
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+}
+
+export const updatePostLikes = async (req, res) => {
+    const { id: _id } = req.params;
+    const postData = req.body;
+
+    try {
+        await post.findByIdAndUpdate({ _id: mongoose.Types.ObjectId(_id) }, { $set: { likes: postData.likes, liked: postData.liked } })
         res.status(201).json({ message: "successfully deleted" });
     } catch (error) {
         res.status(409).json({ message: error.message });
